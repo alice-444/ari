@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import Navbar from "@/components/Navbar.jsx";
+import Footer from "@/components/Footer.jsx";
 import { Nunito } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import ToasterContext from "@/components/ToasterContext.jsx";
@@ -13,6 +14,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }) => {
         <Navbar />
         <ToasterContext />
         <Component {...pageProps} />
+        <Footer />
       </SessionProvider>
     </div>
   );

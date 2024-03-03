@@ -1,9 +1,9 @@
-const Category = () =>{
+const Category = () => {
   return (
     <div>
       <p>Category</p>
     </div>
-  )
-}
+  );
+};
 
-export default Category
+export default Category;

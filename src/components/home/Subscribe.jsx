@@ -10,10 +10,10 @@ const Subscribe = () => {
         <input
           type="email"
           placeholder="Customer@aribooks.com"
-          className="bg-gray-100 border border-gray-300 rounded-lg px-4 py-3 mr-4 mb-2 lg:mb-0 shadow-lg"
+          className="bg-gray-100 border border-gray-300 rounded-md px-4 py-3 mr-4 mb-2 lg:mb-0 shadow-lg"
         />
 
-        <button className="bg-red-300 text-white px-6 py-2 rounded-lg font-semibold transition duration-300 ease-in-out hover:bg-red-200 shadow-lg">
+        <button className="bg-red-300 text-white px-6 py-3 rounded-md font-semibold transition duration-300 ease-in-out hover:bg-red-200 shadow-lg">
           Subscribe
         </button>
       </div>

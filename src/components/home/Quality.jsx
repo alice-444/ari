@@ -2,7 +2,7 @@ const Quality = () => {
   return (
     <div className="flex justify-between items-center max-lg:flex-col gap-10 w-full max-container">
       <div className="flex flex-1 flex-col px-8">
-        <h3 className="mt-10 font-semibold text-4xl text-azure-radiance-400 lg:max-w-lg">
+        <h3 className="mt-10 font-semibold text-4xl text-azure-radiance-500 lg:max-w-lg">
           Quality
         </h3>
         <br />

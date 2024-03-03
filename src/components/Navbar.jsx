@@ -6,7 +6,7 @@ import { TbMinusVertical } from "react-icons/tb";
 import { PiShoppingBagOpenDuotone } from "react-icons/pi";
 
 const navigation = [
-  { name: "Home", href: "home", current: true },
+  { name: "Home", href: "/", current: true },
   { name: "About", href: "#", current: false },
   { name: "Books", href: "#", current: false },
   { name: "Blog", href: "#", current: false },
@@ -23,7 +23,7 @@ const Navbar = () => {
             <div className="lg:px-8">
               <div className="flex justify-between h-16 items-center">
                 <div className="flex items-center sm:hidden">
-                  <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-azure-radiance-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-azure-radiance-S00 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     {open ? (
                       <RxCross2 className="block h-6 w-6" aria-hidden="true" />
                     ) : (
@@ -35,7 +35,7 @@ const Navbar = () => {
                   </Disclosure.Button>
                 </div>
                 <div className="flex-shrink-0 flex items-center">
-                  <h1 className="cursor-pointer text-2xl font-semibold text-azure-radiance-400">
+                  <h1 className="cursor-pointer text-3xl font-semibold text-azure-radiance-500">
                     <Link href="/">
                       <span className="text-red-300">ari</span>Books
                     </Link>
@@ -49,8 +49,8 @@ const Navbar = () => {
                         href={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-azure-radiance-400 text-white shadow-lg"
-                            : "text-gray-300 hover:bg-azure-radiance-400 hover:text-white hover:shadow-lg",
+                            ? "bg-azure-radiance-500 text-white shadow-lg"
+                            : "text-gray-300 hover:bg-azure-radiance-500 hover:text-white hover:shadow-lg",
                           "rounded-lg px-3 py-2 text-xl font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
@@ -62,7 +62,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <button className="rounded-lg border border-red-100 px-3 py-2 text-lg font-semibold text-red-300 hover:bg-red-300 hover:text-white hover:shadow-lg">
-                    <Link href="/login">Sign in</Link>
+                    <Link href="/sign-in">Sign in</Link>
                   </button>
                   <TbMinusVertical />
                   <button className="rounded-lg border border-red-100 px-3 py-2 text-lg font-semibold text-red-300 hover:bg-red-300 hover:text-white hover:shadow-lg">
@@ -73,7 +73,7 @@ const Navbar = () => {
                     href="/cart"
                     className="ml-2 font-semibold items-center"
                   >
-                    <PiShoppingBagOpenDuotone className="w-6 h-6 text-azure-radiance-400" />
+                    <PiShoppingBagOpenDuotone className="w-6 h-6 text-azure-radiance-500" />
                   </Link>
                 </div>
               </div>
@@ -89,8 +89,8 @@ const Navbar = () => {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-azure-radiance-400 text-white shadow-lg"
-                      : "text-gray-300 hover:bg-azure-radiance-400 hover:text-white hover:shadow-lg",
+                      ? "bg-azure-radiance-500 text-white shadow-lg"
+                      : "text-gray-300 hover:bg-azure-radiance-500 hover:text-white hover:shadow-lg",
                     "block rounded-md px-3 py-2 text-xl font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}
