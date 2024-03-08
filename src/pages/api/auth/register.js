@@ -6,8 +6,6 @@ export default async function handler(req, res) {
   try {
     await connectDB();
 
-    console.log("Données de la requête reçues :", req.body);
-
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Method Not Allowed" });
     }

@@ -62,7 +62,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <button className="rounded-lg border border-red-100 px-3 py-2 text-lg font-semibold text-red-300 hover:bg-red-300 hover:text-white hover:shadow-lg">
-                    <Link href="/sign-in">Sign in</Link>
+                    <Link href="login">Sign in</Link>
                   </button>
                   <TbMinusVertical />
                   <button className="rounded-lg border border-red-100 px-3 py-2 text-lg font-semibold text-red-300 hover:bg-red-300 hover:text-white hover:shadow-lg">
