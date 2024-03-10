@@ -3,7 +3,7 @@ import Hero from "@/components/home/Hero.jsx";
 import Quality from "@/components/home/Quality.jsx";
 import Service from "@/components/home/Service.jsx";
 import MongooseConnect from "@/db/mongoose.js";
-import Category from "@/components/home/Category.jsx";
+// import Category from "@/components/home/Category.jsx";
 import Subscribe from "@/components/home/Subscribe.jsx";
 import SpecialOffer from "@/components/home/SpecialOffer.jsx";
 import PopularBooks from "@/components/home/PopularBooks.jsx";

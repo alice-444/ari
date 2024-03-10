@@ -7,7 +7,7 @@ import { PiShoppingBagOpenDuotone } from "react-icons/pi";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "About", href: "#", current: false },
+  { name: "About", href: "/about", current: false },
   { name: "Books", href: "#", current: false },
   { name: "Blog", href: "#", current: false },
 ];

@@ -1,5 +1,3 @@
-import { AiOutlineMail } from "react-icons/ai";
-
 const Subscribe = () => {
   return (
     <section className="max-w-screen-lg flex flex-col lg:flex-row justify-between items-center lg:gap-10 mx-auto py-2">

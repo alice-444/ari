@@ -1,24 +1,13 @@
-import { BiSupport } from "react-icons/bi";
-import { TbTruckDelivery } from "react-icons/tb";
-import { MdOutlinePayment } from "react-icons/md";
-import ServiceCard from "@/components/home/ServiceCard.jsx";
-
-const Services = [
-  { icon: TbTruckDelivery, label: "Quick Delivery", text: "Enjoy shopping with our fast and reliable delivery service" },
-  { icon: MdOutlinePayment, label: "Payment Security", text: "Experience worry-free transactions with our secure payment options" },
-  { icon: BiSupport, label: "Dedicated Support", text: "Our dedicated team is here to assist you every step of the way" },
-];
-
-const Service = () => {
+const ServiceCard = ({ icon: Icon, label, text }) => {
   return (
-    <div>
-      <section className="max-container flex justify-center flex-wrap gap-9 px-20">
-        {Services.map((service) => (
-          <ServiceCard key={service.label}{...service}/>
-        ))}
-      </section>
+    <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+      <div className="flex items-center justify-center bg-azure-radiance-500 rounded-full w-12 h-12 mb-6 mx-auto">
+        <Icon className="w-8 h-8 text-white mx-auto mb-4" />
+      </div>
+      <h3 className="text-2xl font-semibold text-red-300 mb-2">{label}</h3>
+      <p className="text-gray-600 text-lg">{text}</p>
     </div>
   );
 };
 
-export default Service;
+export default ServiceCard;

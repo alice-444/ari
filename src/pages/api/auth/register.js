@@ -12,11 +12,7 @@ export default async function handler(req, res) {
 
     const { username, email, password } = req.body;
 
-    console.log("Données de la requête après extraction :", { username, email, password });
-
     const existingUser = await User.findOne({ email });
-
-    console.log("Utilisateur existant :", existingUser); 
 
     if (existingUser) {
       return res.status(409).json({ error: "User already exists" });
@@ -32,17 +28,11 @@ export default async function handler(req, res) {
       password: hashPassword,
     });
 
-    console.log("Nouvel utilisateur créé :", newUser);
-
     await newUser.save();
 
     return res.status(200).json({ message: "User created successfully" });
   } catch (error) {
     console.error("Error:", error);
-    return res
-      .status(500)
-      .json({ error: "Creating a new user failed" });
+    return res.status(500).json({ error: "Creating a new user failed" });
   }
 }
-
-
