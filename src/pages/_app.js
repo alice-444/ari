@@ -1,16 +1,21 @@
 import "@/styles/globals.css";
-import { Nunito, Ubuntu } from "next/font/google";
+import Navbar from "@/components/Navbar.jsx";
+import Footer from "@/components/Footer.jsx";
+import { Nunito } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 import ToasterContext from "@/components/ToasterContext.jsx";
 
-const inter = { subsets: ["latin"] };
+const inter = Nunito({ subsets: ["latin"], weight: "400" });
 
-const App = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps: { session, ...pageProps } }) => {
   return (
-    <div
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <ToasterContext />
-      <Component {...pageProps} />
+    <div className={`${inter.className}`}>
+      <SessionProvider session={session}>
+        <Navbar />
+        <ToasterContext />
+        <Component {...pageProps} />
+        <Footer />
+      </SessionProvider>
     </div>
   );
 };

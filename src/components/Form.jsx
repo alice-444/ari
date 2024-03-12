@@ -41,7 +41,7 @@ const Form = ({ type }) => {
       });
 
       if (res.ok) {
-        router.push("/home");
+        router.push("/");
       } else {
         toast.error("Invalid email or password");
       }
