@@ -9,24 +9,21 @@ import SpecialOffer from "@/components/home/SpecialOffer.jsx";
 import PopularBooks from "@/components/home/PopularBooks.jsx";
 import CustomerReviews from "@/components/home/CustomerReviews.jsx";
 
-const Home = ({newBooks}) => {
+const Home = ({ newBooks }) => {
   return (
     <main className="relative">
-     
       <p>Hero : en cours de maintenance</p>
-      <PopularBooks books={newBooks}/>
+      <PopularBooks books={newBooks} />
       <div className="py-10">
-        
         <p>Category : en cours de maintenance</p>
       </div>
       <Quality />
       <div className="py-10">
         <Service />
       </div>
-      
-      <p>SpecialOffer : en cours de maintenance</p>
+
+      <SpecialOffer />
       <div className="bg-azure-radiance-200">
-        
         <p>Customer Reviews : en cours de maintenance</p>
       </div>
       <div className="sm:py-32 py-16 w-full">

@@ -1,17 +1,7 @@
 import Link from "next/link";
 import toast from "react-hot-toast";
+import {FormatPrice} from "@/formatPrice.js"
 import { PiShoppingBagOpenDuotone } from "react-icons/pi";
-
-const formatPrice = (price) => {
-  const roundedPrice = Math.round(price * 100) / 100;
-
-  const formattedPrice = new Intl.NumberFormat("fr-FR", {
-    style: "currency",
-    currency: "EUR",
-  }).format(roundedPrice);
-
-  return formattedPrice;
-};
 
 const PopularBooks = ({ books }) => {
   return (
@@ -52,7 +42,7 @@ const PopularBooks = ({ books }) => {
 
                 <div className="flex items-center justify-between space-x-3">
                   <p className="text-lg text-red-300 leading-normal font-semibold">
-                    {formatPrice(book.price)}
+                    {FormatPrice(book.price)}
                   </p>
                   <button
                     className="flex items-center justify-center border rounded-full font-semibold border-red-200 bg-transparent px-5 py-3 text-md text-red-300 transition hover:bg-red-300 hover:text-white"

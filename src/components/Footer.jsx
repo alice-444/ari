@@ -24,7 +24,7 @@ const Footer = () => {
       title: "Help",
       icon: "",
       links: [
-        { name: "About us", href: "#" },
+        { name: "About us", href: "/about" },
         { name: "FAQs", href: "#" },
         { name: "How it works", href: "#" },
         { name: "Privacy policy", href: "#" },
