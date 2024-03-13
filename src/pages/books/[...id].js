@@ -1,7 +1,7 @@
 import Link from "next/link";
 import toast from "react-hot-toast";
 import Book from "@/db/models/Book.js";
-import { FormatPrice } from "@/formatPrice.js";
+import FormatPrice from "@/formatPrice.js";
 import MongooseConnect from "@/db/mongoose.js";
 // import { CartContext } from "@/db/CartContext.js";
 import { useState, useContext, useEffect } from "react";
@@ -66,37 +66,32 @@ const BookPage = ({ book }) => {
             </div>
             <div className="p-4 lg:p-8 border rounded-lg">
               <h1 className="text-3xl font-semibold text-text">{book.title}</h1>
-  <h1 className="text-3xl font-semibold text-text">{book.author}</h1>
+              <h1 className="text-3xl font-semibold text-text">
+                {book.author}
+              </h1>
               <div className="mt-6">
                 <h2 className="text-xl font-semibold">Description</h2>
                 <p className="mt-2 text-gray-700 text-sm">{book.description}</p>
               </div>
 
               <div className="mt-6">
-            <h2 className="text-xl font-semibold">
-                Details
-              </h2>
-              <p className="mt-2 text-gray-700">
-                {product.details}
-              </p>
-            <h3 className="text-lg font-semibold">dateParution</h3>
-              <p className="mt-2 text-gray-700">
-                 {product.dateParution}</p>
-            <h3 className="text-lg font-semibold">editor</h3>
-                <p className="mt-2 text-gray-700">
-                {product.editor}
-              </p>
-            <h3 className="text-lg font-semibold">collection</h3>
-              <p className="mt-2 text-gray-700">
-                {product.collection}</p>
-            <h3 className="text-lg font-semibold">number page</h3>
-              <p className="mt-2 text-gray-700">
-                {product.numberPage}</p>
-            </div>
+                <h2 className="text-xl font-semibold">Details</h2>
+                <p className="mt-2 text-gray-700">{book.details}</p>
+                <h3 className="text-lg font-semibold">publication Date</h3>
+                <p className="mt-2 text-gray-700">{book.publicationDate}</p>
+                <h3 className="text-lg font-semibold">editor</h3>
+                <p className="mt-2 text-gray-700">{book.editor}</p>
+                <h3 className="text-lg font-semibold">ISBN</h3>
+                <p className="mt-2 text-gray-700">{book.ISBN}</p>
+                <h3 className="text-lg font-semibold">EAN</h3>
+                <p className="mt-2 text-gray-700">{book.EAN}</p>
+                <h3 className="text-lg font-semibold">number page</h3>
+                <p className="mt-2 text-gray-700">{book.numberPage}</p>
+              </div>
               <div className="mt-4 flex justify-between items-center">
                 <h2 className="text-xl font-semibold text-gray-700">Price</h2>
 
-                <p className="mt-2 text-primary font-semibold text-lg">
+                <p className="mt-2 text-primary font-semibold text-xl text-gray-700">
                   {FormatPrice(book.price)}
                 </p>
               </div>
@@ -116,8 +111,28 @@ const BookPage = ({ book }) => {
         </section>
       </div>
     );
+  }
 };
 
-}
+export default BookPage;
 
-export default BookPage
+export const getServerSideProps = async (context) => {
+  await MongooseConnect();
+  const { id } = context.query;
+
+  try {
+    const book = await Book.findById(id);
+    return {
+      props: {
+        book: JSON.parse(JSON.stringify(book)),
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching book:", error);
+    return {
+      props: {
+        book: null,
+      },
+    };
+  }
+};

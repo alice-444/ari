@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import Book from "@/db/models/Book.js";
-import { FormatPrice } from "@/formatPrice.js";
+import FormatPrice from "@/formatPrice.js";
 import MongooseConnect from "@/db/mongoose.js";
 // import { CartContext } from "@/db/CartContext.js";
 import { PiShoppingBagOpenDuotone } from "react-icons/pi";
@@ -53,20 +53,20 @@ const Books = ({ allBooks, error }) => {
 
                   <div className="relative p-3 border-t">
                     <Link href={"/books/" + book._id}>
-                      <h3 className="text-xl text-red-300 font-semibold group-hover:underline truncate">
+                      <h3 className="text-2xl text-red-300 font-semibold group-hover:underline truncate">
                         {book.title}
                       </h3>
                     </Link>
                     <Link href={"/"}>
-                      //{" "}
+                      {" "}
                       <h3 className="text-xl text-red-300 font-semibold group-hover:underline truncate">
                         {book.author}{" "}
                       </h3>{" "}
                     </Link>{" "}
                     <div className="mt-1.5 flex flex-col items-center justify-between text-md">
                       {" "}
-                      <p className="tracking-wide text-gray-500 text-md font-semibold md:text-md">
-                        // {FormatPrice(book.price)}
+                      <p className="tracking-wide text-gray-500 text-lg font-semibold md:text-md">
+                        {FormatPrice(book.price)}
                       </p>
                       <div className="col-span-12 text-center w-full">
                         <button
@@ -93,23 +93,23 @@ const Books = ({ allBooks, error }) => {
 export default Books;
 
 export const getServerSideProps = async () => {
-    try {
-      await MongooseConnect();
-      const allBooks = await Book.find({}, null, { sort: { _id: 1 } });
-  
-      return {
-        props: {
-          allBooks: JSON.parse(JSON.stringify(allBooks)),
-        },
-      };
-    } catch (error) {
-      console.error("Error fetching books:", error.message);
-  
-      return {
-        props: {
-          allBooks: [],
-          error: "Please try again later.",
-        },
-      };
-    }
-  };
+  try {
+    await MongooseConnect();
+    const allBooks = await Book.find({}, null, { sort: { _id: 1 } });
+
+    return {
+      props: {
+        allBooks: JSON.parse(JSON.stringify(allBooks)),
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching books:", error.message);
+
+    return {
+      props: {
+        allBooks: [],
+        error: "Please try again later.",
+      },
+    };
+  }
+};

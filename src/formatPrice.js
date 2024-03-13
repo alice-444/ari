@@ -8,3 +8,5 @@ const FormatPrice = (price) => {
   
     return formattedPrice;
   };
+
+  export default FormatPrice

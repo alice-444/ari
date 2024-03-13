@@ -1,6 +1,6 @@
 import Link from "next/link";
 import toast from "react-hot-toast";
-import {FormatPrice} from "@/formatPrice.js"
+import FormatPrice from "@/formatPrice.js"
 import { PiShoppingBagOpenDuotone } from "react-icons/pi";
 
 const PopularBooks = ({ books }) => {
