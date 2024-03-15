@@ -1,9 +1,17 @@
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { useContext } from "react";
 import FormatPrice from "@/formatPrice.js"
+import { CartContext } from "@/db/CartContext.js";
 import { PiShoppingBagOpenDuotone } from "react-icons/pi";
 
 const PopularBooks = ({ books }) => {
+  const { addBook } = useContext(CartContext);
+  const addItemsCart = (book) => {
+    addBook(book._id);
+    toast.success("Item added to cart");
+  };
+
   return (
     <div className="max-container max-sm:mt-12">
       <div className="flex flex-col justify-start gap-5 px-8">
@@ -46,6 +54,9 @@ const PopularBooks = ({ books }) => {
                   </p>
                   <button
                     className="flex items-center justify-center border rounded-full font-semibold border-red-200 bg-transparent px-5 py-3 text-md text-red-300 transition hover:bg-red-300 hover:text-white"
+                    onClick={() => {
+                      addItemsCart(book);
+                    }}
                   >
                     Add to cart{" "}
                     <PiShoppingBagOpenDuotone className="w-6 h-6 ml-2" />

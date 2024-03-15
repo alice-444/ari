@@ -4,10 +4,17 @@ import toast from "react-hot-toast";
 import Book from "@/db/models/Book.js";
 import FormatPrice from "@/formatPrice.js";
 import MongooseConnect from "@/db/mongoose.js";
-// import { CartContext } from "@/db/CartContext.js";
+import { CartContext } from "@/db/CartContext.js";
 import { PiShoppingBagOpenDuotone } from "react-icons/pi";
 
 const Books = ({ allBooks, error }) => {
+  const { addBook } = useContext(CartContext);
+
+  const addItemsCart = (book) => {
+    addBook(book._id);
+    toast.success("Item added to cart");
+  };
+
   if (error) {
     return (
       <div className="flex items-center justify-center h-screen">

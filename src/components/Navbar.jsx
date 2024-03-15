@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { RxCross2 } from "react-icons/rx";
+import { useContext } from "react";
+import { CartContext } from "@/db/CartContext.js";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Disclosure } from "@headlessui/react";
 import { TbMinusVertical } from "react-icons/tb";
@@ -15,6 +17,7 @@ const navigation = [
 const classNames = (...classes) => classes.filter(Boolean).join(" ");
 
 const Navbar = () => {
+  const { cartBooks } = useContext(CartContext);
   return (
     <Disclosure as="nav" className="bg-white">
       {({ open }) => (
@@ -74,6 +77,7 @@ const Navbar = () => {
                     className="ml-2 font-semibold items-center"
                   >
                     <PiShoppingBagOpenDuotone className="w-6 h-6 text-azure-radiance-500" />
+                    {cartBooks.length}
                   </Link>
                 </div>
               </div>
