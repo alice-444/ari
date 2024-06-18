@@ -95,9 +95,9 @@ const Navbar = () => {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-azure-radiance-500 text-white shadow-lg"
-                      : "text-gray-300 hover:bg-azure-radiance-400 hover:text-white hover:shadow-lg",
-                    "block rounded-full px-3 py-2 text-xl font-medium"
+                      ? "bg-gradient-to-r from-blue-400 to-blue-600 text-white shadow-lg"
+                      : "text-gray-300  hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-white hover:shadow-lg",
+                    "block rounded-full py-3 px-8 text-xl font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}
                 >

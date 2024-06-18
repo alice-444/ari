@@ -4,7 +4,7 @@ import { FaGithub, FaInstagram } from "react-icons/fa";
 const Footer = () => {
   const socialIcons = [
     { icon: FaInstagram, link: "#" },
-    { icon: FaGithub, link: "#" },
+    { icon: FaGithub, link: "https://github.com/alice-444/ari.git" },
   ];
 
   const links = [
