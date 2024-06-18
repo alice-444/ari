@@ -4,17 +4,29 @@ import { MdOutlinePayment } from "react-icons/md";
 import ServiceCard from "@/components/home/ServiceCard.jsx";
 
 const Services = [
-  { icon: TbTruckDelivery, label: "Quick Delivery", text: "Enjoy shopping with our fast and reliable delivery service" },
-  { icon: MdOutlinePayment, label: "Payment Security", text: "Experience worry-free transactions with our secure payment options" },
-  { icon: BiSupport, label: "Dedicated Support", text: "Our dedicated team is here to assist you every step of the way" },
+  {
+    icon: TbTruckDelivery,
+    label: "Quick Delivery",
+    text: "Enjoy shopping with our fast and reliable delivery service",
+  },
+  {
+    icon: MdOutlinePayment,
+    label: "Payment Security",
+    text: "Experience worry-free transactions with our secure payment options",
+  },
+  {
+    icon: BiSupport,
+    label: "Dedicated Support",
+    text: "Our dedicated team is here to assist you every step of the way",
+  },
 ];
 
 const Service = () => {
   return (
-    <div>
-      <section className="max-container flex justify-center flex-wrap gap-9 px-20">
+    <div className="max-container mx-auto px-4 sm:px-6 lg:px-8 my-16">
+      <section className="flex justify-center flex-wrap gap-9">
         {Services.map((service) => (
-          <ServiceCard key={service.label}{...service}/>
+          <ServiceCard key={service.label} {...service} />
         ))}
       </section>
     </div>

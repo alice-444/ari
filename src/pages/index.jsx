@@ -1,9 +1,9 @@
 import Book from "@/db/models/Book.js";
+import MongooseConnect from "@/db/mongoose.js";
 import Hero from "@/components/home/Hero.jsx";
 import Quality from "@/components/home/Quality.jsx";
 import Service from "@/components/home/Service.jsx";
-import MongooseConnect from "@/db/mongoose.js";
-// import Category from "@/components/home/Category.jsx";
+import Category from "@/components/home/Category.jsx";
 import Subscribe from "@/components/home/Subscribe.jsx";
 import SpecialOffer from "@/components/home/SpecialOffer.jsx";
 import PopularBooks from "@/components/home/PopularBooks.jsx";
@@ -15,7 +15,7 @@ const Home = ({ newBooks }) => {
       <p>Hero : en cours de maintenance</p>
       <PopularBooks books={newBooks} />
       <div className="py-10">
-        <p>Category : en cours de maintenance</p>
+        <Category />
       </div>
       <Quality />
       <div className="py-10">
