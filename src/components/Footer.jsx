@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { FaGithub, FaInstagram} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   const socialIcons = [
     { icon: FaInstagram, link: "#" },
-    { icon: FaXTwitter, link: "#" },
     { icon: FaGithub, link: "#" },
   ];
 
@@ -66,7 +64,7 @@ const Footer = () => {
                 href={socialIcon.link}
                 className="w-10 h-10 flex justify-center items-center bg-white rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-110"
               >
-                <socialIcon.icon className="w-6 h-6 text-azure-radiance-500" />
+                <socialIcon.icon className="w-7 h-7 text-azure-radiance-500" />
               </a>
             ))}
           </div>
