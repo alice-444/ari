@@ -46,67 +46,78 @@ const BookPage = ({ book }) => {
 
   if (book) {
     return (
-      <div>
-        <section className="mt-20 md:mt-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:aspect-h-2 lg:aspect-w-2 lg:rounded-lg overflow-hidden px-4 md:px-2">
-              <img
-                src={book.images[0]}
-                alt="book-image"
-                className="w-full h-full md:h-[90vh] object-cover object-center border border-primary rounded-lg"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 lg:grid lg:grid-cols-1 lg:gap-y-4 px-2 gap-2 md:gap-0 md:px-2">
-              {book.images.slice(1, 3).map((image, index) => (
-                <div
-                  className="lg:aspect-h-2 lg:aspect-w-3 lg:rounded-lg lg:overflow-hidden"
-                  key={index}
-                >
-                  <img
-                    src={image}
-                    alt="book-image"
-                    className="w-full h-full md:h-[44vh] object-cover object-center border border-secondary rounded-lg p-4"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="p-4 lg:p-8 border rounded-lg">
-              <h1 className="text-3xl font-semibold text-text">{book.title}</h1>
-              <h1 className="text-3xl font-semibold text-text">
-                {book.author}
-              </h1>
-              <div className="mt-6">
-                <h2 className="text-xl font-semibold">Description</h2>
-                <p className="mt-2 text-gray-700 text-sm">{book.description}</p>
+      <div className="max-w-6xl mx-auto p-4">
+        <section className="mt-10 md:mt-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="lg:col-span-1 flex flex-col gap-4">
+              <div className="overflow-hidden rounded-lg">
+                <img
+                  src={book.images[0]}
+                  alt="book-image"
+                  className="w-full h-full object-cover border border-gray-300 rounded-lg"
+                />
               </div>
+              <div className="grid grid-cols-2 gap-4">
+                {book.images.slice(1, 3).map((image, index) => (
+                  <div className="overflow-hidden rounded-lg" key={index}>
+                    <img
+                      src={image}
+                      alt="book-image"
+                      className="w-full h-full object-cover border border-gray-300 rounded-lg"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
 
-              <div className="mt-6">
-                <h2 className="text-xl font-semibold">Details</h2>
-                <p className="mt-2 text-gray-700">{book.details}</p>
-                <h3 className="text-lg font-semibold">publication Date</h3>
-                <p className="mt-2 text-gray-700">{book.publicationDate}</p>
-                <h3 className="text-lg font-semibold">editor</h3>
-                <p className="mt-2 text-gray-700">{book.editor}</p>
-                <h3 className="text-lg font-semibold">ISBN</h3>
-                <p className="mt-2 text-gray-700">{book.ISBN}</p>
-                <h3 className="text-lg font-semibold">EAN</h3>
-                <p className="mt-2 text-gray-700">{book.EAN}</p>
-                <h3 className="text-lg font-semibold">number page</h3>
-                <p className="mt-2 text-gray-700">{book.numberPage}</p>
+            <div className="lg:col-span-1 flex flex-col justify-between p-4 bg-white shadow-lg rounded-lg">
+              <div>
+                <h1 className="text-3xl font-semibold text-gray-800">
+                  {book.title}
+                </h1>
+                <h2 className="text-xl font-semibold text-gray-600 mt-2">
+                  {book.author}
+                </h2>
+                <div className="mt-6">
+                  <h3 className="text-xl font-semibold">Description</h3>
+                  <p className="mt-2 text-gray-700 text-sm">
+                    {book.description}
+                  </p>
+                </div>
+
+                <div className="mt-6">
+                  <h3 className="text-xl font-semibold">Details</h3>
+                  <div className="mt-2 text-gray-700 text-sm space-y-2">
+                    <p>
+                      <span className="font-semibold">Publication Date:</span>{" "}
+                      {book.publicationDate}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Editor:</span>{" "}
+                      {book.editor}
+                    </p>
+                    <p>
+                      <span className="font-semibold">ISBN:</span> {book.ISBN}
+                    </p>
+                    <p>
+                      <span className="font-semibold">EAN:</span> {book.EAN}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Number of Pages:</span>{" "}
+                      {book.numberPage}
+                    </p>
+                  </div>
+                </div>
               </div>
               <div className="mt-4 flex justify-between items-center">
-                <h2 className="text-xl font-semibold text-gray-700">Price</h2>
-
-                <p className="mt-2 text-primary font-semibold text-xl text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-700">Price</h3>
+                <p className="text-primary font-semibold text-xl text-gray-700">
                   {FormatPrice(book.price)}
                 </p>
               </div>
-              <div className="col-span-12 text-center w-full">
+              <div className="mt-4">
                 <button
-                  onClick={() => {
-                    addItemsCart(book);
-                  }}
+                  onClick={() => addItemsCart(book)}
                   className="flex items-center justify-center border rounded-full font-semibold border-azure-radiance-400 bg-transparent px-5 py-3 text-md text-azure-radiance-400 transition hover:bg-azure-radiance-500 hover:text-white w-full"
                 >
                   Add to cart{" "}
