@@ -15,7 +15,6 @@ const Footer = () => {
         { name: "Legals mentions", href: "#" },
         { name: "Personal data", href: "#" },
         { name: "General terms and conditions", href: "#" },
-        { name: "General terms and conditions", href: "#" },
       ],
     },
     {
@@ -96,9 +95,6 @@ const Footer = () => {
       <div className="max-w-screen-xl mx-auto mt-8 text-center text-azure-radiance-400">
         <div className="text-sm">
           &copy; {new Date().getFullYear()} ariBooks, Inc. All rights reserved.
-        </div>
-        <div className="text-sm mt-2">
-          <p>Terms & Conditions</p>
         </div>
       </div>
     </footer>

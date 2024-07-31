@@ -27,6 +27,10 @@ const OrderSchema = new Schema({
     type: String,
     // required: true,
   },
+  books: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Book'
+  }]
 });
 
 const Order = models.Order || model("Order", OrderSchema);
