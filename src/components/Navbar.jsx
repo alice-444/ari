@@ -71,7 +71,7 @@ const Navbar = () => {
                 <TbMinusVertical className="hidden sm:block" />
                 <Link href="/register">
                   <button className="rounded-full border border-azure-radiance-400 px-3 py-2 text-lg font-semibold text-azure-radiance-500 hover:bg-azure-radiance-400 hover:text-white hover:shadow-lg">
-                    Register
+                    Sign up
                   </button>
                 </Link>
                 <TbMinusVertical className="hidden sm:block" />
