@@ -3,6 +3,7 @@ import Link from "next/link";
 import FormatPrice from "@/formatPrice.js";
 import { CartContext } from "@/db/CartContext.js";
 import { useContext, useEffect, useState } from "react";
+import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
 
 const Cart = () => {
   const { cartBooks, removeBook, addBook, clearCart } = useContext(CartContext);
@@ -70,6 +71,7 @@ const Cart = () => {
                     <h3 className="text-xl font-semibold text-gray-700">
                       {book.title}
                     </h3>
+                    <p className="text-gray-500">{book.author}</p>
                     <p className="text-gray-500">
                       {cartBooks.filter((id) => id === book._id).length *
                         book.price}{" "}
@@ -81,7 +83,7 @@ const Cart = () => {
                       onClick={() => decreaseBook(book._id)}
                       className="h-10 w-10 flex items-center justify-center text-gray-600 transition hover:bg-gray-200 rounded-full border border-azure-radiance-400"
                     >
-                      -
+                      <FaMinus className="text-azure-radiance-400" />
                     </button>
                     <input
                       type="number"
@@ -93,7 +95,7 @@ const Cart = () => {
                       onClick={() => increaseBook(book._id)}
                       className="h-10 w-10 flex items-center justify-center text-gray-600 transition hover:bg-gray-200 rounded-full border border-azure-radiance-400"
                     >
-                      +
+                      <FaPlus className="text-azure-radiance-400" />
                     </button>
                   </div>
                 </div>
@@ -103,10 +105,10 @@ const Cart = () => {
                   onClick={deleteCart}
                   className="text-red-300 text-xl hover:text-red-500 transition"
                 >
-                  Clear Cart
+                  <FaTrash className="inline" /> Clear Cart
                 </button>
-                <div className="text-lg font-bold text-gray-700">
-                  Total: {FormatPrice(total)}
+                <div className="text-xl font-bold text-gray-700">
+                  Total : {FormatPrice(total)}
                 </div>
               </div>
               <div className="flex justify-center">
