@@ -1,5 +1,5 @@
-import CountUp from "react-countup";
 import Link from "next/link";
+import CountUp from "react-countup";
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -7,15 +7,15 @@ const Hero = () => {
     <section className="bg-gradient-to-r from-blue-100 to-red-100 py-12">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center md:text-left mb-8 md:mb-0"
+          className="text-center md:text-left mb-8 md:mb-0 md:w-1/2"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-5xl font-bold text-red-300 mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-red-300 mb-4">
             Discover Your Next Favorite Book
           </h1>
-          <p className="text-lg text-gray-700 mb-6">
+          <p className="text-base md:text-lg text-gray-700 mb-6">
             Explore our wide selection of books and find the perfect one for
             you. From fiction to non-fiction, we have something for every
             reader.
@@ -27,7 +27,7 @@ const Hero = () => {
           </Link>
         </motion.div>
         <motion.div
-          className="flex flex-col items-center md:items-end"
+          className="flex flex-col items-center md:items-end md:w-1/2"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}

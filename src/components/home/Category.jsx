@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   FaBook,
   FaPenNib,
@@ -6,9 +5,8 @@ import {
   FaHeart,
   FaMoon,
   FaMagic,
-  FaHistory,
-  FaChild,
 } from "react-icons/fa";
+import Link from "next/link";
 
 const categories = [
   { name: "Fiction", icon: FaBook, link: "/category/fiction" },

@@ -22,18 +22,18 @@ const SpecialOffer = () => {
 
   return (
     <div className="bg-gradient-to-r from-blue-100 to-red-100 p-8 rounded-xl shadow-md">
-      <p className="text-4xl font-bold text-center text-red-300 mb-8">
+      <p className="text-3xl md:text-4xl font-bold text-center text-red-300 mb-8">
         Special Offers
       </p>
       <div className="flex flex-wrap justify-center gap-6">
         {offers.map((offer, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl p-6 shadow-lg flex flex-col items-center sm:w-72 w-full transform transition duration-500 hover:scale-105 hover:shadow-2xl"
+            className="bg-white rounded-xl p-6 shadow-lg flex flex-col items-center w-full sm:w-72 transform transition duration-500 hover:scale-105 hover:shadow-2xl"
           >
             <offer.icon className="text-red-300 w-10 h-10 mb-4" />
             <div className="text-center">
-              <p className="text-xl font-semibold text-gray-800">
+              <p className="text-lg md:text-xl font-semibold text-gray-800">
                 {offer.title}
               </p>
               <p className="text-gray-600 mt-2">
