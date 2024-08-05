@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { RxCross2 } from "react-icons/rx";
 import { useContext } from "react";
+import { useSession } from "next-auth/react";
 import { CartContext } from "@/db/CartContext.js";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Disclosure } from "@headlessui/react";
@@ -18,6 +19,8 @@ const classNames = (...classes) => classes.filter(Boolean).join(" ");
 
 const Navbar = () => {
   const { cartBooks } = useContext(CartContext);
+  const { data: session } = useSession();
+
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -63,17 +66,33 @@ const Navbar = () => {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <Link href="/login">
-                  <button className="rounded-full border border-azure-radiance-400 px-3 py-2 text-lg font-semibold text-azure-radiance-500 hover:bg-azure-radiance-400 hover:text-white hover:shadow-lg">
-                    Sign in
-                  </button>
-                </Link>
-                <TbMinusVertical className="hidden sm:block" />
-                <Link href="/register">
-                  <button className="rounded-full border border-azure-radiance-400 px-3 py-2 text-lg font-semibold text-azure-radiance-500 hover:bg-azure-radiance-400 hover:text-white hover:shadow-lg">
-                    Sign up
-                  </button>
-                </Link>
+                {session ? (
+                  <div className="sm:flex sm:gap-2 border-r pr-4">
+                    <div className="h-9 w-9">
+                      <img
+                        src={session.user.image}
+                        alt={session.user.name}
+                        className="h-full w-full rounded-full object-cover object-center"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  ((
+                    <Link href="/login">
+                      <button className="rounded-full border border-azure-radiance-400 px-3 py-2 text-lg font-semibold text-azure-radiance-500 hover:bg-azure-radiance-400 hover:text-white hover:shadow-lg">
+                        Sign in
+                      </button>
+                    </Link>
+                  ),
+                  (<TbMinusVertical className="hidden sm:block" />),
+                  (
+                    <Link href="/register">
+                      <button className="rounded-full border border-azure-radiance-400 px-3 py-2 text-lg font-semibold text-azure-radiance-500 hover:bg-azure-radiance-400 hover:text-white hover:shadow-lg">
+                        Sign up
+                      </button>
+                    </Link>
+                  ))
+                )}
                 <TbMinusVertical className="hidden sm:block" />
                 <Link
                   href="/cart"

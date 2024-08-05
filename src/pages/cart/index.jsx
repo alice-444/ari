@@ -1,6 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import FormatPrice from "@/formatPrice.js";
+import { useSession } from "next-auth/react";
 import { CartContext } from "@/db/CartContext.js";
 import { useContext, useEffect, useState } from "react";
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
@@ -8,6 +9,14 @@ import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
 const Cart = () => {
   const { cartBooks, removeBook, addBook, clearCart } = useContext(CartContext);
   const [books, setBooks] = useState([]);
+
+  const [address, setAddress] = useState('');
+  const [country, setCountry] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zip, setZip] = useState('');
+
+  const {data: session} = useSession()
 
   useEffect(() => {
     if (cartBooks.length > 0) {
@@ -44,6 +53,10 @@ const Cart = () => {
   for (const bookId of cartBooks) {
     const price = parseFloat(books.find((p) => p._id === bookId)?.price || 0);
     total += price;
+  }
+
+  if(session){
+    
   }
 
   return (
@@ -146,6 +159,13 @@ const Cart = () => {
                 </div>
                 <div>
                   <label className="block text-gray-700">Address</label>
+                  <input
+                    type="text"
+                    className="w-full p-2 border rounded-lg focus:ring focus:ring-azure-radiance-200 focus:border-azure-radiance-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700">Country</label>
                   <input
                     type="text"
                     className="w-full p-2 border rounded-lg focus:ring focus:ring-azure-radiance-200 focus:border-azure-radiance-500"
