@@ -2,10 +2,15 @@ import NextAuth from "next-auth";
 import { compare } from "bcryptjs";
 import User from "@/db/models/User.js";
 import { connectDB } from "@/db/connectDB.js";
+import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export default NextAuth({
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
     CredentialsProvider({
       name: "Credentials",
       async authorize(credentials) {
