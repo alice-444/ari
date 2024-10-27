@@ -1,25 +1,15 @@
 services:
   web:
-    depends_on:
-      - mongo
-    environment:
-      - MONGODB_URL=${MONGODB_URL}
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - MONGODB_URL=${MONGODB_URL}
     ports:
       - 3005:3005
-    develop:
-      watch:
-        - path: ./package.json
-          action: rebuild
-        - path: ./next.config.mjs
-          action: rebuild
-        - path: ./package-lock.json
-          action: rebuild
-        - path: .
-          target: /src
-          action: sync
+    depends_on:
+      - mongo
+
   mongo:
     image: mongo
     ports:
