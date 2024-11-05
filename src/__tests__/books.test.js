@@ -1,4 +1,3 @@
-// src/__tests__/books.test.js
 import { createMocks } from "node-mocks-http";
 import handler from "../pages/api/books";
 import Book from "../db/models/Book";
