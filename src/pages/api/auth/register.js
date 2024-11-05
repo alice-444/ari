@@ -28,7 +28,7 @@
 import { hash } from "bcryptjs";
 import User from "@/db/models/User.js";
 import rateLimit from "express-rate-limit";
-import { connectDB } from "@/db/connectDB.js";
+import {connectDB} from "@/db/connectDB.js";
 import { csrfProtection, cookieParser } from "@/middleware/csrf";
 
 const limiter = rateLimit({

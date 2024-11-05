@@ -1,6 +1,6 @@
 import Book from "@/db/models/Book.js";
+import { connectDB } from "@/db/connectDB";
 import rateLimit from "express-rate-limit";
-import MongooseConnect from "@/db/mongoose.js";
 import { body, validationResult } from "express-validator";
 import { csrfProtection, cookieParser } from "@/middleware/csrf";
 
@@ -73,9 +73,10 @@ export default async function handle(req, res) {
   const { method } = req;
 
   try {
+    await cookieParser()(req, res, () => {});
     await csrfProtection(req, res, async () => {
       await limiter(req, res, async () => {
-        await MongooseConnect();
+        await connectDB();
 
         if (method === "POST") {
           await handlePost(req, res);
