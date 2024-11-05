@@ -1,7 +1,8 @@
+// src/components/Navbar.jsx
 import Link from "next/link";
 import { RxCross2 } from "react-icons/rx";
 import { useContext } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Disclosure } from "@headlessui/react";
 import { TbMinusVertical } from "react-icons/tb";
@@ -72,7 +73,7 @@ const Navbar = () => {
               </div>
 
               <div className="flex items-center gap-6">
-                {!session && (
+                {!session ? (
                   <div className="flex items-center space-x-3">
                     <Link
                       href="/login"
@@ -87,6 +88,18 @@ const Navbar = () => {
                       Sign up
                     </Link>
                   </div>
+                ) : (
+                  <>
+                    <span className="text-gray-700 font-medium">
+                      Welcome, {session.user.name}
+                    </span>
+                    <button
+                      onClick={() => signOut()}
+                      className="rounded-full bg-gradient-to-r from-red-500 to-red-400 px-5 py-2 text-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
+                    >
+                      Sign out
+                    </button>
+                  </>
                 )}
 
                 <TbMinusVertical className="hidden sm:block text-gray-300" />
@@ -130,8 +143,8 @@ const Navbar = () => {
                     Mon profil
                   </Disclosure.Button>
                   <Disclosure.Button
-                    as={Link}
-                    href="/api/auth/signout"
+                    as="button"
+                    onClick={() => signOut()}
                     className="block rounded-full py-3 px-8 text-xl font-medium text-gray-300 hover:bg-gradient-to-r hover:from-azure-radiance-500 hover:to-indigo-500 hover:text-white transition duration-300 ease-in-out"
                   >
                     Déconnexion
