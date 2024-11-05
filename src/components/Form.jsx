@@ -16,6 +16,16 @@ const Form = ({ type }) => {
   } = useForm();
 
   const router = useRouter();
+  const [csrfToken, setCsrfToken] = useState("");
+
+  useEffect(() => {
+    const fetchCsrfToken = async () => {
+      const res = await fetch("/api/csrf-token");
+      const data = await res.json();
+      setCsrfToken(data.csrfToken);
+    };
+    fetchCsrfToken();
+  }, []);
 
   const onSubmit = async (data) => {
     if (type === "register") {
@@ -23,6 +33,7 @@ const Form = ({ type }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "CSRF-Token": csrfToken,
         },
         body: JSON.stringify(data),
       });
@@ -125,6 +136,7 @@ const Form = ({ type }) => {
               <p className="text-red-500">{errors.password.message}</p>
             )}
           </div>
+          <input type="hidden" name="csrfToken" value={csrfToken} />
           <button
             className="w-full shadow-xl px-5 py-3 mt-5 mb-7 rounded-full cursor-pointer bg-azure-radiance-400 hover:bg-red-300 text-white"
             type="submit"
