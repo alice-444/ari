@@ -1,6 +1,6 @@
 import Book from "@/db/models/Book.js";
 import Hero from "@/components/home/Hero.jsx";
-import MongooseConnect from "@/db/mongoose.js";
+import { connectDB } from "@/db/connectDB";
 import Quality from "@/components/home/Quality.jsx";
 import Service from "@/components/home/Service.jsx";
 import Category from "@/components/home/Category.jsx";
@@ -30,7 +30,7 @@ const Home = ({ newBooks }) => {
 export default Home;
 
 export const getServerSideProps = async () => {
-  await MongooseConnect();
+  await connectDB();
 
   const newBooks = await Book.find({}, null, { sort: { _id: 1 }, limit: 4 });
 

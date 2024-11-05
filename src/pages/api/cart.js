@@ -1,8 +1,8 @@
 import Book from "@/db/models/Book.js";
-import MongooseConnect from "@/db/mongoose.js";
+import { connectDB } from "@/db/connectDB.js";
 
 export default async function handle(req, res) {
-  await MongooseConnect();
+  await connectDB();
   const ids = req.body.ids;
 
   try {
