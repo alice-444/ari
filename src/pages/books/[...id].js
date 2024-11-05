@@ -2,7 +2,7 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import Book from "@/db/models/Book.js";
 import FormatPrice from "@/formatPrice.js";
-import MongooseConnect from "@/db/mongoose.js";
+import { connectDB } from "@/db/connectDB.js";
 import { CartContext } from "@/db/CartContext.js";
 import { useState, useContext, useEffect } from "react";
 import { PiShoppingBagOpenDuotone } from "react-icons/pi";
@@ -135,7 +135,7 @@ const BookPage = ({ book }) => {
 export default BookPage;
 
 export const getServerSideProps = async (context) => {
-  await MongooseConnect();
+  await connectDB();
   const { id } = context.query;
 
   try {

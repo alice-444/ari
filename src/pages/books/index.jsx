@@ -3,7 +3,7 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 import Book from "@/db/models/Book.js";
 import FormatPrice from "@/formatPrice.js";
-import MongooseConnect from "@/db/mongoose.js";
+import { connectDB } from "@/db/connectDB.js";
 import { CartContext } from "@/db/CartContext.js";
 import { PiShoppingBagOpenDuotone } from "react-icons/pi";
 
@@ -101,7 +101,7 @@ export default Books;
 
 export const getServerSideProps = async () => {
   try {
-    await MongooseConnect();
+    await connectDB();
     const allBooks = await Book.find({}, null, { sort: { _id: 1 } });
 
     return {
@@ -120,5 +120,3 @@ export const getServerSideProps = async () => {
     };
   }
 };
-
-
