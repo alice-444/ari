@@ -28,7 +28,8 @@
 import { hash } from "bcryptjs";
 import User from "@/db/models/User.js";
 import rateLimit from "express-rate-limit";
-import {connectDB} from "@/db/connectDB.js";
+import { connectDB } from "@/db/connectDB.js";
+import { body, validationResult } from "express-validator";
 import { csrfProtection, cookieParser } from "@/middleware/csrf";
 
 const limiter = rateLimit({
@@ -46,6 +47,15 @@ export default async function handler(req, res) {
 
         if (req.method !== "POST") {
           return res.status(405).json({ error: "Method Not Allowed" });
+        }
+
+        await body("username").isString().trim().notEmpty().escape().run(req);
+        await body("email").isEmail().normalizeEmail().run(req);
+        await body("password").isLength({ min: 6 }).trim().escape().run(req);
+
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+          return res.status(400).json({ errors: errors.array() });
         }
 
         const { username, email, password } = req.body;

@@ -95,16 +95,16 @@ export default async function handle(req, res) {
 
 async function handlePost(req, res) {
   try {
-    await body("title").isString().notEmpty().run(req);
-    await body("author").isString().notEmpty().run(req);
-    await body("translator").optional().isString().run(req);
-    await body("description").isString().notEmpty().run(req);
-    await body("publicationDate").isISO8601().toDate().run(req);
-    await body("editor").isString().notEmpty().run(req);
-    await body("ISBN").isString().notEmpty().run(req);
-    await body("EAN").isString().notEmpty().run(req);
-    await body("numberPage").isInt({ min: 1 }).run(req);
-    await body("price").isFloat({ min: 0 }).run(req);
+    await body('title').isString().trim().notEmpty().escape().run(req);
+    await body('author').isString().trim().notEmpty().escape().run(req);
+    await body('translator').optional().isString().trim().escape().run(req);
+    await body('description').isString().trim().notEmpty().escape().run(req);
+    await body('publicationDate').isISO8601().toDate().run(req);
+    await body('editor').isString().trim().notEmpty().escape().run(req);
+    await body('ISBN').isString().trim().notEmpty().escape().run(req);
+    await body('EAN').isString().trim().notEmpty().escape().run(req);
+    await body('numberPage').isInt({ min: 1 }).toInt().run(req);
+    await body('price').isFloat({ min: 0 }).toFloat().run(req);
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
