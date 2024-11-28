@@ -11,18 +11,18 @@ const inter = Nunito({ subsets: ["latin"], weight: "400" });
 
 const App = ({ Component, pageProps: { session, ...pageProps } }) => {
   return (
-    <CartContextProvider>
-      <div className={`${inter.className}`}>
-        <SessionProvider session={session}>
-          <AuthProvider>
+    <div className={`${inter.className}`}>
+      <SessionProvider session={session}>
+        <AuthProvider>
+          <CartContextProvider>
             <Navbar />
             <ToasterContext />
             <Component {...pageProps} />
             <Footer />
-          </AuthProvider>
-        </SessionProvider>
-      </div>
-    </CartContextProvider>
+          </CartContextProvider>
+        </AuthProvider>
+      </SessionProvider>
+    </div>
   );
 };
 
